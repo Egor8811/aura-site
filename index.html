@@ -5,787 +5,877 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>VexionAI_2.0 — Aura</title>
+<title>VexionAI.com — VexionAI</title>
 
 <style>
-
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 :root {
-    --aura: #6575ff;
-    --glow: #6575ff;
+    --bg: #0b0d10;
+    --sidebar: #101318;
+    --panel: #151920;
+    --border: rgba(255,255,255,.08);
+    --text: #f1f3f5;
+    --muted: #858b96;
+    --hover: rgba(255,255,255,.07);
+    --accent: #7c6cff;
+    --accent2: #5b8cff;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    overflow-x: hidden;
-
-    color: white;
-    font-family: Arial, sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            #18204b 0%,
-            #090b1d 38%,
-            #02030a 80%
-        );
-}
-
-/* PARTICLES */
-
-#particles {
-    position: fixed;
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-.particle {
-    position: absolute;
-
-    width: 3px;
-    height: 3px;
-
-    border-radius: 50%;
-
-    background: white;
-
-    opacity: .45;
-
-    animation: float linear infinite;
-}
-
-@keyframes float {
-
-    from {
-        transform: translateY(110vh);
-    }
-
-    to {
-        transform: translateY(-10vh);
-    }
-
-}
-
-/* HEADER */
-
-header {
-
-    position: relative;
-
-    z-index: 5;
-
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 20px 7%;
-
-    background:
-        rgba(2,3,10,.7);
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:
-        blur(18px);
-}
-
-.logo {
-
-    font-size: 24px;
-
-    font-weight: 900;
-
-    letter-spacing: 4px;
-}
-
-.logo span {
-
-    opacity: .35;
-}
-
-.stats {
-
-    display: flex;
-
-    gap: 22px;
-}
-
-.stat {
-
-    color: #777d99;
-
-    font-size: 11px;
-}
-
-.stat b {
-
-    display: block;
-
-    color: white;
-
-    font-size: 17px;
-
-    margin-top: 4px;
-}
-
-/* MAIN */
-
-main {
-
-    position: relative;
-
-    z-index: 1;
-
-    width: min(1100px,92%);
-
-    margin: auto;
-
-    padding: 50px 0;
-}
-
-.hero {
-
-    text-align: center;
-}
-
-.hero h1 {
-
-    font-size:
-        clamp(50px,10vw,105px);
-
-    letter-spacing: -6px;
-
-    text-shadow:
-        0 0 45px
-        rgba(100,120,255,.35);
-}
-
-.hero p {
-
-    margin-top: 15px;
-
-    color: #777d99;
-}
-
-/* ARENA */
-
-.arena {
-
-    min-height: 520px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-}
-
-/* AURA */
-
-.aura-container {
-
-    position: relative;
-
-    width: 300px;
-    height: 300px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    user-select: none;
-}
-
-.aura-container:hover
-.aura-core {
-
-    transform:
-        scale(1.13);
-}
-
-.aura-ring {
-
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-
-    border-radius: 50%;
-
-    border:
-        2px solid
-        var(--aura);
-
-    opacity: .25;
-
-    box-shadow:
-        0 0 35px
-        var(--glow);
-
-    animation:
-        rotate 9s linear infinite;
-}
-
-.aura-ring:nth-child(2) {
-
-    width: 82%;
-    height: 82%;
-
-    animation-duration: 6s;
-
-    animation-direction:
-        reverse;
-}
-
-.aura-ring:nth-child(3) {
-
-    width: 64%;
-    height: 64%;
-
-    animation-duration: 4s;
-}
-
-@keyframes rotate {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-.aura-core {
-
-    width: 125px;
-    height: 125px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            white 0%,
-            var(--aura) 25%,
-            var(--glow) 48%,
-            transparent 72%
-        );
-
-    box-shadow:
-        0 0 35px var(--aura),
-        0 0 80px var(--glow),
-        0 0 150px var(--aura);
-
-    transition: .25s;
-
-    animation:
-        pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-
-    0%,100% {
-        transform: scale(.9);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-
-}
-
-.click-text {
-
-    position: absolute;
-
-    bottom: -45px;
-
-    width: 100%;
-
-    color: #777d99;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    pointer-events: none;
-}
-
-/* LEVEL */
-
-.level {
-
-    margin-top: 65px;
-}
-
-.aura-name {
-
-    font-size: 31px;
-
-    font-weight: 900;
-}
-
-.rarity {
-
-    margin-top: 8px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-}
-
-.level-number {
-
-    margin-top: 12px;
-
-    color: #777d99;
-}
-
-.xp-box {
-
-    width: min(500px,90vw);
-
-    margin: 20px auto;
-}
-
-.xp-bar {
-
-    height: 9px;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     overflow: hidden;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.07);
 }
 
-.xp-fill {
+/* =========================
+   APP
+========================= */
 
-    width: 0%;
+.app {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
 
-    height: 100%;
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 275px;
+    height: 100vh;
+
+    background: var(--sidebar);
+
+    border-right: 1px solid var(--border);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 14px;
+
+    transition: .25s;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    padding: 10px 8px 20px;
+}
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+    font-weight: 900;
 
     background:
         linear-gradient(
-            90deg,
-            var(--aura),
-            white
+            135deg,
+            #7668ff,
+            #3c9cff
         );
 
     box-shadow:
-        0 0 20px var(--aura);
-
-    transition: .4s;
+        0 0 25px rgba(110,100,255,.25);
 }
 
-.xp-text {
-
-    margin-top: 8px;
-
-    color: #666c87;
-
-    font-size: 12px;
+.brand-name {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -.3px;
 }
 
-/* CONTROLS */
-
-.controls {
-
-    display: flex;
-
-    justify-content: center;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-top: 20px;
+.brand-name span {
+    color: #858b96;
+    font-weight: 500;
 }
 
-button {
+/* NEW CHAT */
 
-    padding: 13px 20px;
+.new-chat {
+    width: 100%;
 
-    border: none;
+    border: 1px solid var(--border);
 
-    border-radius: 12px;
+    background: rgba(255,255,255,.035);
 
     color: white;
 
-    font-weight: 900;
+    padding: 12px 14px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
 
     cursor: pointer;
 
     transition: .2s;
 }
 
-button:hover {
-
-    transform:
-        translateY(-3px);
+.new-chat:hover {
+    background: var(--hover);
+    border-color: rgba(255,255,255,.13);
 }
 
-.auto {
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
+.plus {
+    font-size: 20px;
+    line-height: 0;
 }
 
-.auto.active {
+/* SEARCH */
+
+.search {
+    margin-top: 13px;
+
+    position: relative;
+}
+
+.search input {
+    width: 100%;
+
+    padding: 10px 12px 10px 35px;
+
+    border-radius: 9px;
+
+    border: 1px solid transparent;
+
+    outline: none;
+
+    color: white;
+
+    background: rgba(255,255,255,.035);
+}
+
+.search input:focus {
+    border-color: var(--border);
+}
+
+.search-icon {
+    position: absolute;
+
+    left: 12px;
+    top: 9px;
+
+    color: #777d88;
+}
+
+/* CHAT LIST */
+
+.chat-section-title {
+    margin: 22px 8px 8px;
+
+    color: #686e78;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .7px;
+}
+
+.chat-list {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding-right: 2px;
+}
+
+.chat {
+    padding: 10px 11px;
+
+    border-radius: 9px;
+
+    color: #c7cbd1;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    transition: .15s;
+}
+
+.chat:hover {
+    background: var(--hover);
+}
+
+.chat.active {
+    background: rgba(255,255,255,.075);
+    color: white;
+}
+
+/* USER */
+
+.user {
+    border-top: 1px solid var(--border);
+
+    padding-top: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background:
         linear-gradient(
             135deg,
-            #55ff9a,
-            #1db866
+            #5d6cff,
+            #a45dff
         );
 
-    box-shadow:
-        0 0 25px
-        rgba(50,255,140,.35);
-}
-
-/* ENERGY UPGRADE */
-
-.energy-panel {
-
-    width:
-        min(600px,95vw);
-
-    margin-top: 35px;
-
-    padding: 20px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,.045);
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-}
-
-.energy-title {
-
-    font-size: 17px;
-
+    font-size: 12px;
     font-weight: 900;
 }
 
-.energy-info {
-
-    margin-top: 8px;
-
-    color: #777d99;
-
-    font-size: 12px;
+.user-info {
+    flex: 1;
 }
 
-.energy-bar {
+.user-name {
+    font-size: 13px;
+    font-weight: 700;
+}
 
+.user-plan {
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    color: #707680;
+}
+
+.user-menu {
+    color: #737983;
+
+    cursor: pointer;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    flex: 1;
+
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+/* TOP */
+
+.topbar {
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 22px;
+
+    border-bottom: 1px solid var(--border);
+
+    background:
+        rgba(11,13,16,.72);
+
+    backdrop-filter: blur(16px);
+
+    z-index: 5;
+}
+
+.model {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.model-dot {
+    width: 8px;
     height: 8px;
 
-    margin-top: 15px;
+    border-radius: 50%;
+
+    background: #6dff9a;
+
+    box-shadow:
+        0 0 12px #6dff9a;
+}
+
+.top-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.icon-button {
+    width: 36px;
+    height: 36px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    color: #b7bcc5;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 17px;
+}
+
+.icon-button:hover {
+    background: var(--hover);
+    color: white;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.messages {
+    flex: 1;
+
+    overflow-y: auto;
+
+    scroll-behavior: smooth;
+}
+
+.messages-inner {
+    width: min(850px, 92%);
+
+    margin: auto;
+
+    padding: 55px 0 160px;
+}
+
+/* WELCOME */
+
+.welcome {
+    min-height: 55vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.vexion-logo {
+    width: 64px;
+    height: 64px;
 
     border-radius: 20px;
 
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    background:
-        rgba(255,255,255,.07);
-}
-
-.energy-fill {
-
-    height: 100%;
-
-    width: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #56c7ff,
-            #7f72ff
-        );
-
-    box-shadow:
-        0 0 15px #6575ff;
-
-    transition: .3s;
-}
-
-.upgrade {
-
-    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 900;
 
     background:
         linear-gradient(
             135deg,
-            #6475ff,
-            #4655dc
+            #7468ff,
+            #4e9cff
         );
 
     box-shadow:
-        0 8px 25px
-        rgba(70,80,230,.25);
+        0 0 55px rgba(95,100,255,.3);
+
+    margin-bottom: 25px;
 }
 
-.upgrade:disabled {
+.welcome h1 {
+    font-size: clamp(32px, 5vw, 50px);
 
-    opacity: .4;
+    letter-spacing: -2px;
 
-    cursor: not-allowed;
-
-    transform: none;
+    margin: 0;
 }
 
-/* COLLECTION */
+.welcome p {
+    margin-top: 13px;
 
-.section {
+    color: var(--muted);
 
-    margin-top: 70px;
+    font-size: 15px;
 }
 
-.section-title {
+/* SUGGESTIONS */
 
-    margin-bottom: 20px;
-
-    font-size: 25px;
-}
-
-.collection {
-
+.suggestions {
     display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(170px,1fr)
-        );
+        repeat(2, 1fr);
 
-    gap: 14px;
+    gap: 10px;
+
+    width: min(680px, 100%);
+
+    margin-top: 35px;
 }
 
-.card {
+.suggestion {
+    text-align: left;
 
-    padding: 20px;
+    padding: 15px;
 
-    border-radius: 17px;
+    border-radius: 13px;
 
-    background:
-        rgba(255,255,255,.045);
+    border: 1px solid var(--border);
 
-    border:
-        1px solid
-        rgba(255,255,255,.07);
+    background: rgba(255,255,255,.025);
 
-    transition: .25s;
+    color: #d2d6dc;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-.card:hover {
+.suggestion:hover {
+    background: var(--hover);
+
+    border-color:
+        rgba(255,255,255,.14);
 
     transform:
-        translateY(-5px);
-
-    background:
-        rgba(255,255,255,.08);
+        translateY(-2px);
 }
 
-.card-icon {
+.suggestion strong {
+    display: block;
 
-    font-size: 30px;
-
-    margin-bottom: 13px;
-}
-
-.card-name {
-
-    font-weight: 900;
-}
-
-.card-rarity {
-
-    margin-top: 7px;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-}
-
-.locked {
-
-    opacity: .25;
-
-    filter:
-        grayscale(1);
-}
-
-/* RARITIES */
-
-.common {
-    color: #aaa;
-}
-
-.rare {
-    color: #55caff;
-}
-
-.epic {
-    color: #b56cff;
-}
-
-.legendary {
-    color: #ffd45c;
-
-    text-shadow:
-        0 0 10px #ffd45c;
-}
-
-.mythic {
-
-    color: #ff62f5;
-
-    text-shadow:
-        0 0 15px #ff62f5;
-}
-
-.secret {
-
-    color: #ffffff;
-
-    text-shadow:
-        0 0 10px white,
-        0 0 30px #ff4cff,
-        0 0 50px #6575ff;
-}
-
-/* RESULT */
-
-.last-result {
-
-    margin-top: 25px;
-
-    color: #777d99;
-
-    font-size: 13px;
-}
-
-.last-result strong {
+    margin-bottom: 5px;
 
     color: white;
 }
 
-/* NOTIFICATION */
-
-#notification {
-
-    position: fixed;
-
-    left: 50%;
-    bottom: 30px;
-
-    z-index: 30;
-
-    transform:
-        translate(-50%,30px);
-
-    padding:
-        14px 24px;
-
-    border-radius: 13px;
-
-    background:
-        rgba(6,8,18,.95);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    opacity: 0;
-
-    transition: .3s;
-}
-
-#notification.show {
-
-    opacity: 1;
-
-    transform:
-        translate(-50%,0);
-}
-
-/* FOOTER */
-
-footer {
-
-    padding:
-        70px 20px 30px;
-
-    text-align: center;
-
-    color: #41465d;
+.suggestion span {
+    color: #777e88;
 
     font-size: 12px;
 }
 
-/* MOBILE */
+/* MESSAGE */
 
-@media(max-width:600px) {
+.message {
+    display: flex;
 
-    header {
-        padding: 18px 5%;
+    gap: 15px;
+
+    margin: 35px 0;
+}
+
+.message-avatar {
+    flex: 0 0 auto;
+
+    width: 31px;
+    height: 31px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.message.user-message
+.message-avatar {
+    background: #292e38;
+}
+
+.message.ai-message
+.message-avatar {
+    background:
+        linear-gradient(
+            135deg,
+            #7468ff,
+            #4d9cff
+        );
+}
+
+.message-content {
+    min-width: 0;
+
+    padding-top: 4px;
+
+    line-height: 1.7;
+
+    color: #e0e3e7;
+
+    font-size: 15px;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+}
+
+.message-name {
+    margin-bottom: 5px;
+
+    color: #9ca2ad;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+/* =========================
+   COMPOSER
+========================= */
+
+.composer-wrap {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding:
+        20px 20px 22px;
+
+    background:
+        linear-gradient(
+            to top,
+            var(--bg) 65%,
+            transparent
+        );
+
+    z-index: 4;
+}
+
+.composer {
+    width: min(850px, 92%);
+
+    margin: auto;
+
+    position: relative;
+
+    background:
+        #171a20;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 60px
+        rgba(0,0,0,.35);
+
+    transition: .2s;
+}
+
+.composer:focus-within {
+    border-color:
+        rgba(124,108,255,.45);
+
+    box-shadow:
+        0 15px 70px
+        rgba(50,40,150,.15);
+}
+
+textarea {
+    display: block;
+
+    width: 100%;
+
+    min-height: 58px;
+    max-height: 180px;
+
+    resize: none;
+
+    padding:
+        17px 58px 15px 17px;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+textarea::placeholder {
+    color: #666d78;
+}
+
+.send {
+    position: absolute;
+
+    right: 9px;
+    bottom: 9px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    border: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7668ff,
+            #4e91ff
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.send:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 20px
+        rgba(100,100,255,.3);
+}
+
+.send:disabled {
+    opacity: .35;
+
+    cursor: default;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+.composer-bottom {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        0 14px 10px;
+
+    color: #656c77;
+
+    font-size: 11px;
+}
+
+.composer-hint {
+    flex: 1;
+}
+
+.powered {
+    text-align: center;
+
+    margin-top: 8px;
+
+    color: #505660;
+
+    font-size: 10px;
+}
+
+/* =========================
+   TYPING
+========================= */
+
+.typing {
+    display: flex;
+
+    gap: 5px;
+
+    padding: 7px 0;
+}
+
+.typing span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #898fff;
+
+    animation:
+        typing .9s infinite;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+@keyframes typing {
+
+    0%,60%,100% {
+        opacity: .25;
+        transform: translateY(0);
     }
 
-    .stats {
-        gap: 10px;
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+.mobile-menu {
+    display: none;
+}
+
+@media(max-width:760px) {
+
+    .sidebar {
+        position: fixed;
+
+        left: -285px;
+
+        top: 0;
+
+        z-index: 50;
+
+        box-shadow:
+            20px 0 70px
+            rgba(0,0,0,.4);
     }
 
-    .aura-container {
-        width: 235px;
-        height: 235px;
+    .sidebar.open {
+        left: 0;
     }
 
-    .aura-core {
-        width: 100px;
-        height: 100px;
+    .mobile-menu {
+        display: block;
     }
 
-    .controls {
-        flex-direction: column;
-        align-items: center;
+    .topbar {
+        padding: 0 12px;
     }
 
-    button {
-        width: 230px;
+    .messages-inner {
+        width: 94%;
+        padding-top: 30px;
     }
 
+    .suggestions {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome {
+        min-height: 60vh;
+    }
+
+    .composer-wrap {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .composer {
+        width: 96%;
+    }
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #292e37;
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 </style>
@@ -793,1097 +883,664 @@ footer {
 
 <body>
 
-<div id="particles"></div>
+<div class="app">
 
-<header>
+<!-- =========================
+     SIDEBAR
+========================= -->
 
-    <div class="logo">
-        VEXION<span>AI_2.0</span>
-    </div>
+<aside
+    class="sidebar"
+    id="sidebar"
+>
 
-    <div class="stats">
+    <div class="brand">
 
-        <div class="stat">
-            ENERGY
-            <b id="energy">100</b>
+        <div class="brand-icon">
+            V
         </div>
 
-        <div class="stat">
-            MAX
-            <b id="maxEnergy">100</b>
-        </div>
-
-        <div class="stat">
-            AURAS
-            <b id="auraCount">0</b>
+        <div class="brand-name">
+            VexionAI
+            <span>.com</span>
         </div>
 
     </div>
 
-</header>
-
-<main>
-
-<section class="hero">
-
-    <h1>AWAKEN.</h1>
-
-    <p>
-        Discover the aura hidden inside you.
-    </p>
-
-</section>
-
-<section class="arena">
-
-    <div
-        class="aura-container"
-        id="auraButton"
+    <button
+        class="new-chat"
+        id="newChat"
     >
 
-        <div class="aura-ring"></div>
-        <div class="aura-ring"></div>
-        <div class="aura-ring"></div>
+        <span class="plus">+</span>
 
-        <div class="aura-core"></div>
+        Новый чат
 
-        <div class="click-text">
-            CLICK TO AWAKEN
+    </button>
+
+    <div class="search">
+
+        <span class="search-icon">
+            ⌕
+        </span>
+
+        <input
+            id="search"
+            placeholder="Поиск чатов"
+        >
+
+    </div>
+
+    <div class="chat-section-title">
+        История
+    </div>
+
+    <div
+        class="chat-list"
+        id="chatList"
+    ></div>
+
+    <div class="user">
+
+        <div class="avatar">
+            V
+        </div>
+
+        <div class="user-info">
+
+            <div class="user-name">
+                Vexion
+            </div>
+
+            <div class="user-plan">
+                VexionAI Free
+            </div>
+
+        </div>
+
+        <div class="user-menu">
+            ⋯
         </div>
 
     </div>
 
-    <div class="level">
+</aside>
 
-        <div
-            class="aura-name"
-            id="auraName"
-        >
-            Unknown Aura
-        </div>
+<!-- =========================
+     MAIN
+========================= -->
 
-        <div
-            class="rarity common"
-            id="rarity"
-        >
-            UNKNOWN
-        </div>
+<section class="main">
 
-        <div class="level-number">
+    <header class="topbar">
 
-            LEVEL
-            <span id="level">1</span>
-
-        </div>
-
-        <div class="xp-box">
-
-            <div class="xp-bar">
-
-                <div
-                    class="xp-fill"
-                    id="xpFill"
-                ></div>
-
-            </div>
-
-            <div class="xp-text">
-
-                <span id="xp">0</span>
-                / 100 XP
-
-            </div>
-
-        </div>
-
-        <div class="controls">
+        <div class="model">
 
             <button
-                class="auto"
-                id="autoButton"
+                class="icon-button mobile-menu"
+                id="mobileMenu"
             >
-                🤖 AUTO: OFF
+                ☰
+            </button>
+
+            <span class="model-dot"></span>
+
+            VexionAI
+
+        </div>
+
+        <div class="top-actions">
+
+            <button
+                class="icon-button"
+                title="Новый чат"
+                id="topNew"
+            >
+                ＋
+            </button>
+
+            <button
+                class="icon-button"
+                title="Настройки"
+                onclick="showSettings()"
+            >
+                ⚙
             </button>
 
         </div>
 
-        <div class="last-result">
+    </header>
 
-            LAST AURA:
-            <strong id="lastAura">
-                None
-            </strong>
-
-        </div>
-
-    </div>
-
-    <!-- ENERGY -->
-
-    <div class="energy-panel">
-
-        <div class="energy-title">
-            ⚡ ENERGY CORE
-        </div>
-
-        <div
-            class="energy-info"
-            id="energyInfo"
-        >
-            100 / 100 ENERGY
-        </div>
-
-        <div class="energy-bar">
-
-            <div
-                class="energy-fill"
-                id="energyFill"
-            ></div>
-
-        </div>
-
-        <button
-            class="upgrade"
-            id="upgradeButton"
-        >
-            🔋 UPGRADE MAX ENERGY
-        </button>
-
-    </div>
-
-</section>
-
-<section class="section">
-
-    <h2 class="section-title">
-        AURA COLLECTION
-    </h2>
+    <!-- =========================
+         MESSAGES
+    ========================= -->
 
     <div
-        class="collection"
-        id="collection"
-    ></div>
+        class="messages"
+        id="messages"
+    >
+
+        <div
+            class="messages-inner"
+            id="messagesInner"
+        >
+
+            <div
+                class="welcome"
+                id="welcome"
+            >
+
+                <div class="vexion-logo">
+                    V
+                </div>
+
+                <h1>
+                    Чем я могу помочь?
+                </h1>
+
+                <p>
+                    VexionAI — новый AI для идей,
+                    кода, учебы и общения.
+                </p>
+
+                <div class="suggestions">
+
+                    <div
+                        class="suggestion"
+                        data-prompt="Придумай мне идею для крутой игры"
+                    >
+
+                        <strong>
+                            🎮 Создать игру
+                        </strong>
+
+                        <span>
+                            Придумай концепцию новой игры
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="suggestion"
+                        data-prompt="Помоги мне написать красивый сайт"
+                    >
+
+                        <strong>
+                            💻 Написать код
+                        </strong>
+
+                        <span>
+                            Создай сайт или приложение
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="suggestion"
+                        data-prompt="Объясни мне сложную тему простыми словами"
+                    >
+
+                        <strong>
+                            🧠 Объяснить тему
+                        </strong>
+
+                        <span>
+                            Разберём всё простыми словами
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="suggestion"
+                        data-prompt="Придумай необычный проект, который можно сделать"
+                    >
+
+                        <strong>
+                            🚀 Новый проект
+                        </strong>
+
+                        <span>
+                            Найди интересную идею
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         COMPOSER
+    ========================= -->
+
+    <div class="composer-wrap">
+
+        <div class="composer">
+
+            <textarea
+                id="input"
+                placeholder="Напишите сообщение VexionAI..."
+                rows="1"
+            ></textarea>
+
+            <button
+                class="send"
+                id="send"
+                title="Отправить"
+            >
+                ↑
+            </button>
+
+            <div class="composer-bottom">
+
+                <span class="composer-hint">
+                    Enter — отправить • Shift + Enter — новая строка
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="powered">
+            VexionAI может допускать ошибки. Проверяйте важную информацию.
+        </div>
+
+    </div>
 
 </section>
 
-</main>
-
-<footer>
-
-    VEXIONAI_2.0 — AURA CORE
-
-</footer>
-
-<div id="notification"></div>
+</div>
 
 <script>
 
-/* ======================================
-   AURAS
-====================================== */
+/* =========================================
+   DATA
+========================================= */
 
-const auras = [
-
-    /* COMMON */
-
-    {
-        name:"Void",
-        icon:"🌑",
-        rarity:"COMMON",
-        chance:20,
-        className:"common",
-        color:"#7777ff"
-    },
-
-    {
-        name:"Nature",
-        icon:"🌿",
-        rarity:"COMMON",
-        chance:15,
-        className:"common",
-        color:"#55ff88"
-    },
-
-    {
-        name:"Ember",
-        icon:"🔥",
-        rarity:"COMMON",
-        chance:12,
-        className:"common",
-        color:"#ff713f"
-    },
-
-    {
-        name:"Wind",
-        icon:"💨",
-        rarity:"COMMON",
-        chance:10,
-        className:"common",
-        color:"#bdefff"
-    },
-
-    {
-        name:"Aqua",
-        icon:"💧",
-        rarity:"COMMON",
-        chance:8,
-        className:"common",
-        color:"#4fcaff"
-    },
-
-    /* RARE */
-
-    {
-        name:"Frost",
-        icon:"❄️",
-        rarity:"RARE",
-        chance:8,
-        className:"rare",
-        color:"#55d9ff"
-    },
-
-    {
-        name:"Ocean",
-        icon:"🌊",
-        rarity:"RARE",
-        chance:6,
-        className:"rare",
-        color:"#287dff"
-    },
-
-    {
-        name:"Lunar",
-        icon:"🌙",
-        rarity:"RARE",
-        chance:5,
-        className:"rare",
-        color:"#b9baff"
-    },
-
-    {
-        name:"Toxic",
-        icon:"☢️",
-        rarity:"RARE",
-        chance:4,
-        className:"rare",
-        color:"#8dff42"
-    },
-
-    {
-        name:"Magma",
-        icon:"🌋",
-        rarity:"RARE",
-        chance:3,
-        className:"rare",
-        color:"#ff3e22"
-    },
-
-    /* EPIC */
-
-    {
-        name:"Thunder",
-        icon:"⚡",
-        rarity:"EPIC",
-        chance:2.5,
-        className:"epic",
-        color:"#a867ff"
-    },
-
-    {
-        name:"Crimson",
-        icon:"🩸",
-        rarity:"EPIC",
-        chance:1.8,
-        className:"epic",
-        color:"#ff3155"
-    },
-
-    {
-        name:"Phantom",
-        icon:"👻",
-        rarity:"EPIC",
-        chance:1.5,
-        className:"epic",
-        color:"#d86cff"
-    },
-
-    {
-        name:"Galaxy",
-        icon:"🌌",
-        rarity:"EPIC",
-        chance:1.2,
-        className:"epic",
-        color:"#6d5cff"
-    },
-
-    {
-        name:"Arcane",
-        icon:"🔮",
-        rarity:"EPIC",
-        chance:1,
-        className:"epic",
-        color:"#bd5cff"
-    },
-
-    /* LEGENDARY */
-
-    {
-        name:"Solar",
-        icon:"☀️",
-        rarity:"LEGENDARY",
-        chance:.7,
-        className:"legendary",
-        color:"#ffd34f"
-    },
-
-    {
-        name:"Celestial",
-        icon:"🌠",
-        rarity:"LEGENDARY",
-        chance:.45,
-        className:"legendary",
-        color:"#fff2a0"
-    },
-
-    {
-        name:"Divine",
-        icon:"👑",
-        rarity:"LEGENDARY",
-        chance:.3,
-        className:"legendary",
-        color:"#ffffff"
-    },
-
-    {
-        name:"Dragon",
-        icon:"🐉",
-        rarity:"LEGENDARY",
-        chance:.2,
-        className:"legendary",
-        color:"#ff562f"
-    },
-
-    {
-        name:"Inferno",
-        icon:"🔥",
-        rarity:"LEGENDARY",
-        chance:.15,
-        className:"legendary",
-        color:"#ff8a22"
-    },
-
-    /* MYTHIC */
-
-    {
-        name:"Eternal",
-        icon:"💠",
-        rarity:"MYTHIC",
-        chance:.08,
-        className:"mythic",
-        color:"#ff63f5"
-    },
-
-    {
-        name:"Singularity",
-        icon:"🕳️",
-        rarity:"MYTHIC",
-        chance:.04,
-        className:"mythic",
-        color:"#9d45ff"
-    },
-
-    {
-        name:"Omniverse",
-        icon:"🌌",
-        rarity:"MYTHIC",
-        chance:.02,
-        className:"mythic",
-        color:"#55aaff"
-    },
-
-    {
-        name:"Infinity",
-        icon:"♾️",
-        rarity:"MYTHIC",
-        chance:.01,
-        className:"mythic",
-        color:"#ff55d9"
-    },
-
-    /* SECRET */
-
-    {
-        name:"UNKNOWN",
-        icon:"👁️",
-        rarity:"SECRET",
-        chance:.001,
-        className:"secret",
-        color:"#ffffff"
-    }
-
-];
-
-
-/* ======================================
-   GAME
-====================================== */
-
-let game =
+let chats =
 JSON.parse(
     localStorage.getItem(
-        "vexionAura"
+        "vexionChats"
     )
-) || {
+) || [];
 
-    energy:100,
-
-    maxEnergy:100,
-
-    energyLevel:1,
-
-    energyUpgradeCost:100,
-
-    level:1,
-
-    xp:0,
-
-    collection:[],
-
-    currentAura:"Unknown Aura",
-
-    currentRarity:"UNKNOWN",
-
-    lastAura:"None"
-
-};
+let currentChat = null;
 
 
-let autoMode = false;
+/* =========================================
+   ELEMENTS
+========================================= */
 
-let autoTimer = null;
+const input =
+    document.getElementById("input");
+
+const send =
+    document.getElementById("send");
+
+const messagesInner =
+    document.getElementById(
+        "messagesInner"
+    );
+
+const messages =
+    document.getElementById(
+        "messages"
+    );
+
+const welcome =
+    document.getElementById(
+        "welcome"
+    );
+
+const chatList =
+    document.getElementById(
+        "chatList"
+    );
 
 
-/* ======================================
+/* =========================================
    SAVE
-====================================== */
+========================================= */
 
-function saveGame(){
+function saveChats() {
 
     localStorage.setItem(
-        "vexionAura",
-        JSON.stringify(game)
+        "vexionChats",
+        JSON.stringify(chats)
     );
 
 }
 
 
-/* ======================================
-   PARTICLES
-====================================== */
+/* =========================================
+   NEW CHAT
+========================================= */
 
-const particles =
-document.getElementById(
-    "particles"
-);
+function newChat() {
 
-for(
-    let i=0;
-    i<90;
-    i++
-){
+    currentChat = {
 
-    const p =
-    document.createElement(
-        "div"
+        id: Date.now(),
+
+        title: "Новый чат",
+
+        messages: []
+
+    };
+
+    chats.unshift(
+        currentChat
     );
 
-    p.className =
-        "particle";
+    saveChats();
 
-    p.style.left =
-        Math.random()*100+"%";
+    renderChatList();
 
-    p.style.animationDuration =
-        (5+Math.random()*12)+"s";
+    renderCurrentChat();
 
-    p.style.animationDelay =
-        Math.random()*10+"s";
-
-    p.style.opacity =
-        Math.random()*.7;
-
-    particles.appendChild(p);
+    input.focus();
 
 }
 
 
-/* ======================================
-   ROLL
-====================================== */
-
-function rollAura(){
-
-    if(
-        game.energy < 10
-    ){
-
-        notify(
-            "⚡ Нужна энергия!"
-        );
-
-        return;
-    }
-
-
-    game.energy -= 10;
-
-
-    const random =
-        Math.random()*100;
-
-
-    let total=0;
-
-    let selected =
-        auras[0];
-
-
-    for(
-        const aura of auras
-    ){
-
-        total +=
-            aura.chance;
-
-        if(
-            random <= total
-        ){
-
-            selected =
-                aura;
-
-            break;
-
-        }
-
-    }
-
-
-    game.currentAura =
-        selected.name;
-
-    game.currentRarity =
-        selected.rarity;
-
-    game.lastAura =
-        selected.name;
-
-
-    if(
-        !game.collection
-        .includes(selected.name)
-    ){
-
-        game.collection.push(
-            selected.name
-        );
-
-    }
-
-
-    game.xp += 20;
-
-
-    if(
-        game.xp >= 100
-    ){
-
-        game.xp -= 100;
-
-        game.level++;
-
-        notify(
-            "🔥 LEVEL UP!"
-        );
-
-    }
-
-
-    saveGame();
-
-    updateUI();
-
-    auraBurst(
-        selected
-    );
-
-}
-
-
-/* ======================================
-   AURA EFFECT
-====================================== */
-
-function auraBurst(aura){
-
-    document.documentElement
-    .style
-    .setProperty(
-        "--aura",
-        aura.color
-    );
-
-    document.documentElement
-    .style
-    .setProperty(
-        "--glow",
-        aura.color
-    );
-
-
-    const core =
-        document.querySelector(
-            ".aura-core"
-        );
-
-
-    core.animate(
-
-        [
-
-            {
-                transform:
-                    "scale(1)"
-            },
-
-            {
-                transform:
-                    "scale(1.8)"
-            },
-
-            {
-                transform:
-                    "scale(1)"
-            }
-
-        ],
-
-        {
-
-            duration:700,
-
-            easing:
-                "ease-out"
-
-        }
-
-    );
-
-}
-
-
-/* ======================================
-   CLICK
-====================================== */
-
-document
-.getElementById(
-    "auraButton"
-)
-.addEventListener(
-    "click",
-    rollAura
-);
-
-
-/* ======================================
-   AUTO
-====================================== */
-
-document
-.getElementById(
-    "autoButton"
-)
-.addEventListener(
-    "click",
-    toggleAuto
-);
-
-
-function toggleAuto(){
-
-    autoMode =
-        !autoMode;
-
-
-    const button =
-        document.getElementById(
-            "autoButton"
-        );
-
-
-    if(
-        autoMode
-    ){
-
-        button.textContent =
-            "🤖 AUTO: ON";
-
-        button.classList.add(
-            "active"
-        );
-
-
-        notify(
-            "AUTO включён"
-        );
-
-
-        rollAura();
-
-
-        autoTimer =
-            setInterval(
-                () => {
-
-                    if(
-                        game.energy < 10
-                    ){
-
-                        toggleAuto();
-
-                        notify(
-                            "AUTO остановлен"
-                        );
-
-                        return;
-
-                    }
-
-                    rollAura();
-
-                },
-                1200
+/* =========================================
+   CHAT LIST
+========================================= */
+
+function renderChatList() {
+
+    chatList.innerHTML = "";
+
+    chats.forEach(
+        chat => {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "chat" +
+                (
+                    currentChat &&
+                    currentChat.id === chat.id
+                        ? " active"
+                        : ""
+                );
+
+            item.textContent =
+                chat.title;
+
+            item.onclick =
+                () => openChat(
+                    chat.id
+                );
+
+            chatList.appendChild(
+                item
             );
 
-    }
-
-    else{
-
-        button.textContent =
-            "🤖 AUTO: OFF";
-
-        button.classList.remove(
-            "active"
-        );
-
-
-        clearInterval(
-            autoTimer
-        );
-
-        autoTimer =
-            null;
-
-    }
+        }
+    );
 
 }
 
 
-/* ======================================
-   ENERGY UPGRADE
-====================================== */
+/* =========================================
+   OPEN CHAT
+========================================= */
 
-document
-.getElementById(
-    "upgradeButton"
-)
-.addEventListener(
-    "click",
-    upgradeEnergy
-);
+function openChat(id) {
+
+    currentChat =
+        chats.find(
+            chat =>
+                chat.id === id
+        );
+
+    renderCurrentChat();
+
+    renderChatList();
+
+}
 
 
-function upgradeEnergy(){
+/* =========================================
+   RENDER
+========================================= */
+
+function renderCurrentChat() {
+
+    messagesInner.innerHTML = "";
 
     if(
-        game.energy <
-        game.energyUpgradeCost
-    ){
+        !currentChat ||
+        currentChat.messages.length === 0
+    ) {
 
-        notify(
-            "💰 Недостаточно энергии для улучшения!"
+        messagesInner.appendChild(
+            createWelcome()
         );
 
         return;
 
     }
 
+    currentChat.messages.forEach(
+        message => {
 
-    game.energy -=
-        game.energyUpgradeCost;
+            addMessageToScreen(
+                message.role,
+                message.text,
+                false
+            );
 
-
-    game.energyLevel++;
-
-
-    game.maxEnergy =
-        Math.floor(
-            game.maxEnergy * 1.5
-        );
-
-
-    game.energy =
-        game.maxEnergy;
-
-
-    game.energyUpgradeCost =
-        Math.floor(
-            game.energyUpgradeCost * 1.7
-        );
-
-
-    notify(
-        "🔋 ENERGY CORE UPGRADED!"
+        }
     );
 
-
-    saveGame();
-
-    updateUI();
+    scrollBottom();
 
 }
 
 
-/* ======================================
-   UI
-====================================== */
+/* =========================================
+   WELCOME
+========================================= */
 
-function updateUI(){
+function createWelcome() {
 
-    document.getElementById(
-        "energy"
-    ).textContent =
-        game.energy;
-
-
-    document.getElementById(
-        "maxEnergy"
-    ).textContent =
-        game.maxEnergy;
-
-
-    document.getElementById(
-        "auraCount"
-    ).textContent =
-        game.collection.length;
-
-
-    document.getElementById(
-        "level"
-    ).textContent =
-        game.level;
-
-
-    document.getElementById(
-        "xp"
-    ).textContent =
-        game.xp;
-
-
-    document.getElementById(
-        "xpFill"
-    ).style.width =
-        game.xp+"%";
-
-
-    document.getElementById(
-        "auraName"
-    ).textContent =
-        game.currentAura;
-
-
-    document.getElementById(
-        "lastAura"
-    ).textContent =
-        game.lastAura;
-
-
-    const energyPercent =
-        Math.min(
-            100,
-            (
-                game.energy /
-                game.maxEnergy
-            )*100
+    const div =
+        document.createElement(
+            "div"
         );
 
+    div.className =
+        "welcome";
 
-    document.getElementById(
-        "energyFill"
-    ).style.width =
-        energyPercent+"%";
+    div.innerHTML = `
 
+        <div class="vexion-logo">
+            V
+        </div>
 
-    document.getElementById(
-        "energyInfo"
-    ).textContent =
-        game.energy +
-        " / " +
-        game.maxEnergy +
-        " ENERGY";
+        <h1>
+            Чем я могу помочь?
+        </h1>
 
+        <p>
+            VexionAI — новый AI для идей,
+            кода, учебы и общения.
+        </p>
 
-    const upgradeButton =
-        document.getElementById(
-            "upgradeButton"
-        );
+        <div class="suggestions">
 
+            <div
+                class="suggestion"
+                data-prompt="Придумай мне идею для крутой игры"
+            >
+                <strong>
+                    🎮 Создать игру
+                </strong>
 
-    upgradeButton.textContent =
-        "🔋 UPGRADE ENERGY • " +
-        game.energyUpgradeCost;
-
-
-    upgradeButton.disabled =
-        game.energy <
-        game.energyUpgradeCost;
-
-
-    const rarity =
-        document.getElementById(
-            "rarity"
-        );
-
-
-    rarity.textContent =
-        game.currentRarity;
-
-
-    rarity.className =
-        "rarity";
-
-
-    const current =
-        auras.find(
-            aura =>
-                aura.name ===
-                game.currentAura
-        );
-
-
-    if(current){
-
-        rarity.classList.add(
-            current.className
-        );
-
-
-        document.documentElement
-        .style
-        .setProperty(
-            "--aura",
-            current.color
-        );
-
-
-        document.documentElement
-        .style
-        .setProperty(
-            "--glow",
-            current.color
-        );
-
-    }
-
-
-    renderCollection();
-
-}
-
-
-/* ======================================
-   COLLECTION
-====================================== */
-
-function renderCollection(){
-
-    const container =
-        document.getElementById(
-            "collection"
-        );
-
-
-    container.innerHTML =
-        "";
-
-
-    for(
-        const aura of auras
-    ){
-
-        const unlocked =
-            game.collection
-            .includes(
-                aura.name
-            );
-
-
-        const card =
-            document.createElement(
-                "div"
-            );
-
-
-        card.className =
-            "card"+
-            (
-                unlocked
-                ? ""
-                : " locked"
-            );
-
-
-        card.innerHTML = `
-
-            <div class="card-icon">
-
-                ${
-                    unlocked
-                    ? aura.icon
-                    : "?"
-                }
-
-            </div>
-
-            <div class="card-name">
-
-                ${
-                    unlocked
-                    ? aura.name
-                    : "Unknown"
-                }
-
+                <span>
+                    Придумай концепцию новой игры
+                </span>
             </div>
 
             <div
-                class="card-rarity
-                ${aura.className}"
+                class="suggestion"
+                data-prompt="Помоги мне написать красивый сайт"
             >
+                <strong>
+                    💻 Написать код
+                </strong>
 
-                ${
-                    unlocked
-                    ? aura.rarity
-                    : "LOCKED"
-                }
-
+                <span>
+                    Создай сайт или приложение
+                </span>
             </div>
 
-        `;
+            <div
+                class="suggestion"
+                data-prompt="Объясни мне сложную тему простыми словами"
+            >
+                <strong>
+                    🧠 Объяснить тему
+                </strong>
+
+                <span>
+                    Разберём всё простыми словами
+                </span>
+            </div>
+
+            <div
+                class="suggestion"
+                data-prompt="Придумай необычный проект, который можно сделать"
+            >
+                <strong>
+                    🚀 Новый проект
+                </strong>
+
+                <span>
+                    Найди интересную идею
+                </span>
+            </div>
+
+        </div>
+
+    `;
+
+    return div;
+
+}
 
 
-        container.appendChild(
-            card
+/* =========================================
+   ADD MESSAGE
+========================================= */
+
+function addMessageToScreen(
+    role,
+    text,
+    animate = true
+) {
+
+    const wrapper =
+        document.createElement(
+            "div"
+        );
+
+    wrapper.className =
+        "message " +
+        (
+            role === "user"
+                ? "user-message"
+                : "ai-message"
+        );
+
+    const avatar =
+        document.createElement(
+            "div"
+        );
+
+    avatar.className =
+        "message-avatar";
+
+    avatar.textContent =
+        role === "user"
+            ? "V"
+            : "V";
+
+    const content =
+        document.createElement(
+            "div"
+        );
+
+    content.className =
+        "message-content";
+
+    content.innerHTML = `
+
+        <div class="message-name">
+            ${
+                role === "user"
+                    ? "Вы"
+                    : "VexionAI"
+            }
+        </div>
+
+        <div></div>
+
+    `;
+
+    const textElement =
+        content.querySelector(
+            "div:last-child"
+        );
+
+    textElement.textContent =
+        text;
+
+    wrapper.appendChild(
+        avatar
+    );
+
+    wrapper.appendChild(
+        content
+    );
+
+    messagesInner.appendChild(
+        wrapper
+    );
+
+    if(animate) {
+
+        wrapper.animate(
+
+            [
+                {
+                    opacity: 0,
+                    transform:
+                        "translateY(8px)"
+                },
+
+                {
+                    opacity: 1,
+                    transform:
+                        "translateY(0)"
+                }
+
+            ],
+
+            {
+                duration: 250,
+                easing: "ease-out"
+            }
+
         );
 
     }
@@ -1891,96 +1548,468 @@ function renderCollection(){
 }
 
 
-/* ======================================
-   ENERGY REGEN
-====================================== */
+/* =========================================
+   SEND
+========================================= */
 
-setInterval(
+async function sendMessage() {
 
-    () => {
+    const text =
+        input.value.trim();
 
-        if(
-            game.energy <
-            game.maxEnergy
-        ){
-
-            game.energy += 2;
-
-            if(
-                game.energy >
-                game.maxEnergy
-            ){
-
-                game.energy =
-                    game.maxEnergy;
-
-            }
-
-            saveGame();
-
-            updateUI();
-
-        }
-
-    },
-
-    3000
-
-);
+    if(!text)
+        return;
 
 
-/* ======================================
-   NOTIFICATIONS
-====================================== */
+    if(!currentChat) {
 
-let notificationTimer;
+        currentChat = {
+
+            id: Date.now(),
+
+            title:
+                text.slice(0,38),
+
+            messages: []
+
+        };
+
+        chats.unshift(
+            currentChat
+        );
+
+    }
 
 
-function notify(text){
+    if(
+        currentChat.title ===
+        "Новый чат"
+    ) {
 
-    const n =
-        document.getElementById(
-            "notification"
+        currentChat.title =
+            text.slice(0,38);
+
+    }
+
+
+    currentChat.messages.push({
+
+        role: "user",
+
+        text: text
+
+    });
+
+
+    input.value = "";
+
+    resizeInput();
+
+    renderCurrentChat();
+
+    renderChatList();
+
+    saveChats();
+
+    scrollBottom();
+
+
+    showTyping();
+
+
+    await delay(850);
+
+
+    hideTyping();
+
+
+    const response =
+        generateDemoResponse(
+            text
         );
 
 
-    n.textContent =
-        text;
+    currentChat.messages.push({
+
+        role: "ai",
+
+        text: response
+
+    });
 
 
-    n.classList.add(
-        "show"
+    addMessageToScreen(
+        "ai",
+        response
     );
 
 
-    clearTimeout(
-        notificationTimer
-    );
+    saveChats();
 
+    renderChatList();
 
-    notificationTimer =
-        setTimeout(
-
-            () => {
-
-                n.classList.remove(
-                    "show"
-                );
-
-            },
-
-            2200
-
-        );
+    scrollBottom();
 
 }
 
 
-/* ======================================
-   START
-====================================== */
+/* =========================================
+   DEMO AI
+========================================= */
 
-updateUI();
+function generateDemoResponse(text) {
+
+    const lower =
+        text.toLowerCase();
+
+
+    if(
+        lower.includes("привет") ||
+        lower.includes("здравств")
+    ) {
+
+        return `Привет! 👋
+
+Я VexionAI.
+
+Готов помочь с кодом, идеями, играми, учебой и практически любыми задачами.
+
+Что будем создавать?`;
+
+    }
+
+
+    if(
+        lower.includes("сайт") ||
+        lower.includes("html") ||
+        lower.includes("код")
+    ) {
+
+        return `Конечно. 💻
+
+Я могу помочь тебе создать сайт с нуля: HTML, CSS и JavaScript.
+
+Можем сделать:
+• современный интерфейс;
+• анимации;
+• адаптацию под телефон;
+• красивые кнопки и меню;
+• сохранение данных;
+• подключение настоящего AI.
+
+Если хочешь, я могу написать весь код целиком.`;
+
+    }
+
+
+    if(
+        lower.includes("игр")
+    ) {
+
+        return `Отличная идея. 🎮
+
+Можно сделать игру прямо на сайте.
+
+Например:
+• систему уровней;
+• магазин;
+• способности;
+• задания;
+• достижения;
+• красивый UI;
+• сохранение прогресса.
+
+Расскажи концепцию — и VexionAI поможет собрать её по частям.`;
+
+    }
+
+
+    if(
+        lower.includes("кто ты")
+    ) {
+
+        return `Я VexionAI — AI-помощник проекта VexionAI.com.
+
+Моя задача — помогать тебе создавать идеи, код, проекты и разбираться в сложных вещах. 🚀`;
+
+    }
+
+
+    return `Понял тебя.
+
+Сейчас это демонстрационная версия VexionAI, поэтому настоящий ответ AI ещё не подключён к серверу.
+
+Но интерфейс уже готов.
+
+Чтобы VexionAI действительно отвечал как полноценный AI, следующим шагом нужно подключить backend и AI API.`;
+
+}
+
+
+/* =========================================
+   TYPING
+========================================= */
+
+let typingElement = null;
+
+
+function showTyping() {
+
+    typingElement =
+        document.createElement(
+            "div"
+        );
+
+    typingElement.className =
+        "message ai-message";
+
+    typingElement.innerHTML = `
+
+        <div class="message-avatar">
+            V
+        </div>
+
+        <div class="message-content">
+
+            <div class="message-name">
+                VexionAI
+            </div>
+
+            <div class="typing">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    `;
+
+    messagesInner.appendChild(
+        typingElement
+    );
+
+    scrollBottom();
+
+}
+
+
+function hideTyping() {
+
+    if(typingElement) {
+
+        typingElement.remove();
+
+        typingElement = null;
+
+    }
+
+}
+
+
+/* =========================================
+   HELPERS
+========================================= */
+
+function delay(ms) {
+
+    return new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                ms
+            )
+    );
+
+}
+
+
+function scrollBottom() {
+
+    setTimeout(
+        () => {
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+        },
+
+        50
+    );
+
+}
+
+
+function resizeInput() {
+
+    input.style.height =
+        "auto";
+
+    input.style.height =
+        Math.min(
+            input.scrollHeight,
+            180
+        ) + "px";
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+send.onclick =
+    sendMessage;
+
+
+input.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+input.addEventListener(
+    "input",
+    resizeInput
+);
+
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const suggestion =
+            event.target.closest(
+                ".suggestion"
+            );
+
+        if(
+            suggestion
+        ) {
+
+            input.value =
+                suggestion.dataset.prompt;
+
+            resizeInput();
+
+            input.focus();
+
+        }
+
+    }
+);
+
+
+/* NEW CHAT */
+
+document
+    .getElementById("newChat")
+    .onclick =
+        newChat;
+
+
+document
+    .getElementById("topNew")
+    .onclick =
+        newChat;
+
+
+/* MOBILE */
+
+document
+    .getElementById("mobileMenu")
+    .onclick =
+        () => {
+
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList.toggle(
+                    "open"
+                );
+
+        };
+
+
+/* SEARCH */
+
+document
+    .getElementById("search")
+    .addEventListener(
+        "input",
+        event => {
+
+            const query =
+                event.target.value
+                    .toLowerCase();
+
+            document
+                .querySelectorAll(
+                    ".chat"
+                )
+                .forEach(
+                    item => {
+
+                        item.style.display =
+                            item.textContent
+                                .toLowerCase()
+                                .includes(
+                                    query
+                                )
+                                ? ""
+                                : "none";
+
+                    }
+                );
+
+        }
+    );
+
+
+/* SETTINGS */
+
+function showSettings() {
+
+    alert(
+        "VexionAI Settings\n\n" +
+        "Интерфейс VexionAI.com\n" +
+        "Версия 1.0\n\n" +
+        "Настройки будут добавлены позже."
+    );
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+if(chats.length > 0) {
+
+    currentChat =
+        chats[0];
+
+}
+
+renderChatList();
+
+renderCurrentChat();
 
 </script>
 
