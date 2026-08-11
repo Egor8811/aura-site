@@ -5,9 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>VexionAI 2.0 — Aura</title>
+<title>VexionAI_2.0 — Aura</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -15,22 +16,23 @@
 }
 
 :root {
-    --aura-color: #6677ff;
-    --aura-glow: #596aff;
+    --aura: #6575ff;
+    --glow: #6575ff;
 }
 
 body {
     min-height: 100vh;
     overflow-x: hidden;
+
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
 
     background:
         radial-gradient(
-            circle at 50% 40%,
-            #171d46 0%,
-            #080a18 38%,
-            #020309 80%
+            circle at 50% 35%,
+            #18204b 0%,
+            #090b1d 38%,
+            #02030a 80%
         );
 }
 
@@ -39,22 +41,29 @@ body {
 #particles {
     position: fixed;
     inset: 0;
+
     pointer-events: none;
+
     z-index: 0;
 }
 
 .particle {
     position: absolute;
+
     width: 3px;
     height: 3px;
+
     border-radius: 50%;
+
     background: white;
-    opacity: .5;
+
+    opacity: .45;
 
     animation: float linear infinite;
 }
 
 @keyframes float {
+
     from {
         transform: translateY(110vh);
     }
@@ -62,90 +71,124 @@ body {
     to {
         transform: translateY(-10vh);
     }
+
 }
 
 /* HEADER */
 
 header {
+
     position: relative;
+
     z-index: 5;
 
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
-    padding: 22px 7%;
+    padding: 20px 7%;
 
-    background: rgba(2,3,9,.65);
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    background:
+        rgba(2,3,10,.7);
 
-    backdrop-filter: blur(18px);
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(18px);
 }
 
 .logo {
+
     font-size: 24px;
+
     font-weight: 900;
+
     letter-spacing: 4px;
 }
 
 .logo span {
-    opacity: .4;
+
+    opacity: .35;
 }
 
 .stats {
+
     display: flex;
-    gap: 25px;
+
+    gap: 22px;
 }
 
 .stat {
+
     color: #777d99;
-    font-size: 12px;
+
+    font-size: 11px;
 }
 
 .stat b {
+
     display: block;
+
     color: white;
+
     font-size: 17px;
-    margin-top: 3px;
+
+    margin-top: 4px;
 }
 
 /* MAIN */
 
 main {
+
     position: relative;
+
     z-index: 1;
 
-    width: min(1100px, 92%);
+    width: min(1100px,92%);
+
     margin: auto;
 
-    padding: 55px 0;
+    padding: 50px 0;
 }
 
 .hero {
+
     text-align: center;
 }
 
 .hero h1 {
-    font-size: clamp(52px, 10vw, 110px);
+
+    font-size:
+        clamp(50px,10vw,105px);
+
     letter-spacing: -6px;
 
     text-shadow:
-        0 0 30px rgba(100,120,255,.3);
+        0 0 45px
+        rgba(100,120,255,.35);
 }
 
 .hero p {
+
     margin-top: 15px;
+
     color: #777d99;
 }
 
 /* ARENA */
 
 .arena {
-    min-height: 530px;
+
+    min-height: 520px;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
@@ -154,12 +197,14 @@ main {
 /* AURA */
 
 .aura-container {
+
     position: relative;
 
     width: 300px;
     height: 300px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -168,11 +213,15 @@ main {
     user-select: none;
 }
 
-.aura-container:hover .aura-core {
-    transform: scale(1.12);
+.aura-container:hover
+.aura-core {
+
+    transform:
+        scale(1.13);
 }
 
 .aura-ring {
+
     position: absolute;
 
     width: 100%;
@@ -180,38 +229,41 @@ main {
 
     border-radius: 50%;
 
-    border: 2px solid color-mix(
-        in srgb,
-        var(--aura-color),
-        transparent 70%
-    );
+    border:
+        2px solid
+        var(--aura);
+
+    opacity: .25;
 
     box-shadow:
-        0 0 35px color-mix(
-            in srgb,
-            var(--aura-color),
-            transparent 60%
-        );
+        0 0 35px
+        var(--glow);
 
-    animation: rotate 9s linear infinite;
+    animation:
+        rotate 9s linear infinite;
 }
 
 .aura-ring:nth-child(2) {
+
     width: 82%;
     height: 82%;
 
     animation-duration: 6s;
-    animation-direction: reverse;
+
+    animation-direction:
+        reverse;
 }
 
 .aura-ring:nth-child(3) {
-    width: 63%;
-    height: 63%;
+
+    width: 64%;
+    height: 64%;
 
     animation-duration: 4s;
 }
 
 @keyframes rotate {
+
     from {
         transform: rotate(0deg);
     }
@@ -219,9 +271,11 @@ main {
     to {
         transform: rotate(360deg);
     }
+
 }
 
 .aura-core {
+
     width: 125px;
     height: 125px;
 
@@ -231,22 +285,24 @@ main {
         radial-gradient(
             circle,
             white 0%,
-            var(--aura-color) 25%,
-            var(--aura-glow) 45%,
+            var(--aura) 25%,
+            var(--glow) 48%,
             transparent 72%
         );
 
     box-shadow:
-        0 0 35px var(--aura-color),
-        0 0 80px var(--aura-glow),
-        0 0 150px var(--aura-color);
+        0 0 35px var(--aura),
+        0 0 80px var(--glow),
+        0 0 150px var(--aura);
 
     transition: .25s;
 
-    animation: pulse 1.8s ease-in-out infinite;
+    animation:
+        pulse 1.8s ease-in-out infinite;
 }
 
 @keyframes pulse {
+
     0%,100% {
         transform: scale(.9);
     }
@@ -254,18 +310,21 @@ main {
     50% {
         transform: scale(1.08);
     }
+
 }
 
 .click-text {
+
     position: absolute;
 
     bottom: -45px;
 
     width: 100%;
 
-    color: #7f85a3;
+    color: #777d99;
 
-    font-size: 13px;
+    font-size: 12px;
+
     letter-spacing: 2px;
 
     pointer-events: none;
@@ -274,86 +333,108 @@ main {
 /* LEVEL */
 
 .level {
+
     margin-top: 65px;
 }
 
 .aura-name {
-    font-size: 30px;
+
+    font-size: 31px;
+
     font-weight: 900;
 }
 
 .rarity {
+
     margin-top: 8px;
 
-    font-size: 13px;
+    font-size: 12px;
+
     font-weight: bold;
+
     letter-spacing: 2px;
 }
 
 .level-number {
+
     margin-top: 12px;
+
     color: #777d99;
 }
 
 .xp-box {
-    width: min(500px, 90vw);
+
+    width: min(500px,90vw);
+
     margin: 20px auto;
 }
 
 .xp-bar {
+
     height: 9px;
 
     overflow: hidden;
 
     border-radius: 20px;
 
-    background: rgba(255,255,255,.07);
+    background:
+        rgba(255,255,255,.07);
 }
 
 .xp-fill {
+
     width: 0%;
+
     height: 100%;
 
     background:
         linear-gradient(
             90deg,
-            var(--aura-color),
+            var(--aura),
             white
         );
 
-    box-shadow: 0 0 20px var(--aura-color);
+    box-shadow:
+        0 0 20px var(--aura);
 
-    transition: width .4s;
+    transition: .4s;
 }
 
 .xp-text {
+
     margin-top: 8px;
 
     color: #666c87;
+
     font-size: 12px;
 }
 
-/* BUTTONS */
+/* CONTROLS */
 
 .controls {
+
     display: flex;
+
     justify-content: center;
 
-    gap: 12px;
+    flex-wrap: wrap;
+
+    gap: 10px;
 
     margin-top: 20px;
 }
 
 button {
-    padding: 14px 25px;
 
-    border: 0;
+    padding: 13px 20px;
+
+    border: none;
+
     border-radius: 12px;
 
     color: white;
 
     font-weight: 900;
-    letter-spacing: 1px;
 
     cursor: pointer;
 
@@ -361,99 +442,209 @@ button {
 }
 
 button:hover {
-    transform: translateY(-3px);
+
+    transform:
+        translateY(-3px);
 }
 
 .auto {
-    background: rgba(255,255,255,.07);
 
-    border: 1px solid rgba(255,255,255,.1);
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 }
 
 .auto.active {
-    background: linear-gradient(
-        135deg,
-        #5bff9b,
-        #21b969
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #55ff9a,
+            #1db866
+        );
 
     box-shadow:
-        0 0 25px rgba(60,255,150,.35);
+        0 0 25px
+        rgba(50,255,140,.35);
 }
 
-/* LAST RESULT */
+/* ENERGY UPGRADE */
 
-.last-result {
-    margin-top: 25px;
+.energy-panel {
+
+    width:
+        min(600px,95vw);
+
+    margin-top: 35px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.energy-title {
+
+    font-size: 17px;
+
+    font-weight: 900;
+}
+
+.energy-info {
+
+    margin-top: 8px;
 
     color: #777d99;
 
-    font-size: 13px;
+    font-size: 12px;
 }
 
-.last-result strong {
-    color: white;
+.energy-bar {
+
+    height: 8px;
+
+    margin-top: 15px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.energy-fill {
+
+    height: 100%;
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #56c7ff,
+            #7f72ff
+        );
+
+    box-shadow:
+        0 0 15px #6575ff;
+
+    transition: .3s;
+}
+
+.upgrade {
+
+    margin-top: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6475ff,
+            #4655dc
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(70,80,230,.25);
+}
+
+.upgrade:disabled {
+
+    opacity: .4;
+
+    cursor: not-allowed;
+
+    transform: none;
 }
 
 /* COLLECTION */
 
 .section {
+
     margin-top: 70px;
 }
 
 .section-title {
+
     margin-bottom: 20px;
 
     font-size: 25px;
 }
 
 .collection {
+
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(170px,1fr));
+        repeat(
+            auto-fit,
+            minmax(170px,1fr)
+        );
 
     gap: 14px;
 }
 
 .card {
+
     padding: 20px;
 
     border-radius: 17px;
 
-    background: rgba(255,255,255,.045);
+    background:
+        rgba(255,255,255,.045);
 
-    border: 1px solid rgba(255,255,255,.07);
+    border:
+        1px solid
+        rgba(255,255,255,.07);
 
     transition: .25s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
 
-    background: rgba(255,255,255,.08);
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.08);
 }
 
 .card-icon {
+
     font-size: 30px;
 
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
 .card-name {
+
     font-weight: 900;
 }
 
 .card-rarity {
+
     margin-top: 7px;
 
-    font-size: 11px;
+    font-size: 10px;
+
     letter-spacing: 1px;
 }
 
 .locked {
-    opacity: .3;
-    filter: grayscale(1);
+
+    opacity: .25;
+
+    filter:
+        grayscale(1);
 }
 
 /* RARITIES */
@@ -463,47 +654,79 @@ button:hover {
 }
 
 .rare {
-    color: #54c9ff;
+    color: #55caff;
 }
 
 .epic {
-    color: #b979ff;
+    color: #b56cff;
 }
 
 .legendary {
     color: #ffd45c;
+
+    text-shadow:
+        0 0 10px #ffd45c;
 }
 
 .mythic {
+
     color: #ff62f5;
 
     text-shadow:
         0 0 15px #ff62f5;
 }
 
+.secret {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 30px #ff4cff,
+        0 0 50px #6575ff;
+}
+
+/* RESULT */
+
+.last-result {
+
+    margin-top: 25px;
+
+    color: #777d99;
+
+    font-size: 13px;
+}
+
+.last-result strong {
+
+    color: white;
+}
+
 /* NOTIFICATION */
 
 #notification {
+
     position: fixed;
 
     left: 50%;
     bottom: 30px;
 
-    z-index: 20;
+    z-index: 30;
 
     transform:
-        translate(-50%, 30px);
+        translate(-50%,30px);
 
-    padding: 14px 24px;
+    padding:
+        14px 24px;
 
     border-radius: 13px;
 
-    background: rgba(7,9,20,.92);
+    background:
+        rgba(6,8,18,.95);
 
     border:
-        1px solid rgba(255,255,255,.1);
-
-    backdrop-filter: blur(15px);
+        1px solid
+        rgba(255,255,255,.1);
 
     opacity: 0;
 
@@ -511,47 +734,19 @@ button:hover {
 }
 
 #notification.show {
+
     opacity: 1;
 
     transform:
-        translate(-50%, 0);
-}
-
-/* CLICK EFFECT */
-
-.click-effect {
-    position: fixed;
-
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    border: 2px solid var(--aura-color);
-
-    animation: clickEffect .7s ease-out forwards;
-
-    z-index: 50;
-}
-
-@keyframes clickEffect {
-    from {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    to {
-        transform: scale(8);
-        opacity: 0;
-    }
+        translate(-50%,0);
 }
 
 /* FOOTER */
 
 footer {
-    padding: 70px 20px 30px;
+
+    padding:
+        70px 20px 30px;
 
     text-align: center;
 
@@ -569,7 +764,7 @@ footer {
     }
 
     .stats {
-        gap: 12px;
+        gap: 10px;
     }
 
     .aura-container {
@@ -582,18 +777,17 @@ footer {
         height: 100px;
     }
 
-    .arena {
-        min-height: 470px;
-    }
-
     .controls {
         flex-direction: column;
+        align-items: center;
     }
 
     button {
-        width: 220px;
+        width: 230px;
     }
+
 }
+
 </style>
 </head>
 
@@ -612,6 +806,11 @@ footer {
         <div class="stat">
             ENERGY
             <b id="energy">100</b>
+        </div>
+
+        <div class="stat">
+            MAX
+            <b id="maxEnergy">100</b>
         </div>
 
         <div class="stat">
@@ -637,11 +836,9 @@ footer {
 
 <section class="arena">
 
-    <!-- CLICK THIS -->
     <div
         class="aura-container"
         id="auraButton"
-        title="Нажми, чтобы получить ауру"
     >
 
         <div class="aura-ring"></div>
@@ -721,6 +918,39 @@ footer {
 
     </div>
 
+    <!-- ENERGY -->
+
+    <div class="energy-panel">
+
+        <div class="energy-title">
+            ⚡ ENERGY CORE
+        </div>
+
+        <div
+            class="energy-info"
+            id="energyInfo"
+        >
+            100 / 100 ENERGY
+        </div>
+
+        <div class="energy-bar">
+
+            <div
+                class="energy-fill"
+                id="energyFill"
+            ></div>
+
+        </div>
+
+        <button
+            class="upgrade"
+            id="upgradeButton"
+        >
+            🔋 UPGRADE MAX ENERGY
+        </button>
+
+    </div>
+
 </section>
 
 <section class="section">
@@ -748,84 +978,284 @@ footer {
 
 <script>
 
-/* ================================
+/* ======================================
    AURAS
-================================ */
+====================================== */
 
 const auras = [
 
+    /* COMMON */
+
     {
-        name: "Void",
-        icon: "🌑",
-        rarity: "COMMON",
-        chance: 55,
-        className: "common",
-        color: "#7777ff"
+        name:"Void",
+        icon:"🌑",
+        rarity:"COMMON",
+        chance:20,
+        className:"common",
+        color:"#7777ff"
     },
 
     {
-        name: "Frost",
-        icon: "❄️",
-        rarity: "RARE",
-        chance: 25,
-        className: "rare",
-        color: "#54c9ff"
+        name:"Nature",
+        icon:"🌿",
+        rarity:"COMMON",
+        chance:15,
+        className:"common",
+        color:"#55ff88"
     },
 
     {
-        name: "Thunder",
-        icon: "⚡",
-        rarity: "EPIC",
-        chance: 13,
-        className: "epic",
-        color: "#ad65ff"
+        name:"Ember",
+        icon:"🔥",
+        rarity:"COMMON",
+        chance:12,
+        className:"common",
+        color:"#ff713f"
     },
 
     {
-        name: "Solar",
-        icon: "☀️",
-        rarity: "LEGENDARY",
-        chance: 6,
-        className: "legendary",
-        color: "#ffd45c"
+        name:"Wind",
+        icon:"💨",
+        rarity:"COMMON",
+        chance:10,
+        className:"common",
+        color:"#bdefff"
     },
 
     {
-        name: "Eternal",
-        icon: "💠",
-        rarity: "MYTHIC",
-        chance: 1,
-        className: "mythic",
-        color: "#ff62f5"
+        name:"Aqua",
+        icon:"💧",
+        rarity:"COMMON",
+        chance:8,
+        className:"common",
+        color:"#4fcaff"
+    },
+
+    /* RARE */
+
+    {
+        name:"Frost",
+        icon:"❄️",
+        rarity:"RARE",
+        chance:8,
+        className:"rare",
+        color:"#55d9ff"
+    },
+
+    {
+        name:"Ocean",
+        icon:"🌊",
+        rarity:"RARE",
+        chance:6,
+        className:"rare",
+        color:"#287dff"
+    },
+
+    {
+        name:"Lunar",
+        icon:"🌙",
+        rarity:"RARE",
+        chance:5,
+        className:"rare",
+        color:"#b9baff"
+    },
+
+    {
+        name:"Toxic",
+        icon:"☢️",
+        rarity:"RARE",
+        chance:4,
+        className:"rare",
+        color:"#8dff42"
+    },
+
+    {
+        name:"Magma",
+        icon:"🌋",
+        rarity:"RARE",
+        chance:3,
+        className:"rare",
+        color:"#ff3e22"
+    },
+
+    /* EPIC */
+
+    {
+        name:"Thunder",
+        icon:"⚡",
+        rarity:"EPIC",
+        chance:2.5,
+        className:"epic",
+        color:"#a867ff"
+    },
+
+    {
+        name:"Crimson",
+        icon:"🩸",
+        rarity:"EPIC",
+        chance:1.8,
+        className:"epic",
+        color:"#ff3155"
+    },
+
+    {
+        name:"Phantom",
+        icon:"👻",
+        rarity:"EPIC",
+        chance:1.5,
+        className:"epic",
+        color:"#d86cff"
+    },
+
+    {
+        name:"Galaxy",
+        icon:"🌌",
+        rarity:"EPIC",
+        chance:1.2,
+        className:"epic",
+        color:"#6d5cff"
+    },
+
+    {
+        name:"Arcane",
+        icon:"🔮",
+        rarity:"EPIC",
+        chance:1,
+        className:"epic",
+        color:"#bd5cff"
+    },
+
+    /* LEGENDARY */
+
+    {
+        name:"Solar",
+        icon:"☀️",
+        rarity:"LEGENDARY",
+        chance:.7,
+        className:"legendary",
+        color:"#ffd34f"
+    },
+
+    {
+        name:"Celestial",
+        icon:"🌠",
+        rarity:"LEGENDARY",
+        chance:.45,
+        className:"legendary",
+        color:"#fff2a0"
+    },
+
+    {
+        name:"Divine",
+        icon:"👑",
+        rarity:"LEGENDARY",
+        chance:.3,
+        className:"legendary",
+        color:"#ffffff"
+    },
+
+    {
+        name:"Dragon",
+        icon:"🐉",
+        rarity:"LEGENDARY",
+        chance:.2,
+        className:"legendary",
+        color:"#ff562f"
+    },
+
+    {
+        name:"Inferno",
+        icon:"🔥",
+        rarity:"LEGENDARY",
+        chance:.15,
+        className:"legendary",
+        color:"#ff8a22"
+    },
+
+    /* MYTHIC */
+
+    {
+        name:"Eternal",
+        icon:"💠",
+        rarity:"MYTHIC",
+        chance:.08,
+        className:"mythic",
+        color:"#ff63f5"
+    },
+
+    {
+        name:"Singularity",
+        icon:"🕳️",
+        rarity:"MYTHIC",
+        chance:.04,
+        className:"mythic",
+        color:"#9d45ff"
+    },
+
+    {
+        name:"Omniverse",
+        icon:"🌌",
+        rarity:"MYTHIC",
+        chance:.02,
+        className:"mythic",
+        color:"#55aaff"
+    },
+
+    {
+        name:"Infinity",
+        icon:"♾️",
+        rarity:"MYTHIC",
+        chance:.01,
+        className:"mythic",
+        color:"#ff55d9"
+    },
+
+    /* SECRET */
+
+    {
+        name:"UNKNOWN",
+        icon:"👁️",
+        rarity:"SECRET",
+        chance:.001,
+        className:"secret",
+        color:"#ffffff"
     }
 
 ];
 
 
-/* ================================
-   GAME DATA
-================================ */
+/* ======================================
+   GAME
+====================================== */
 
 let game =
-    JSON.parse(
-        localStorage.getItem("vexionAura")
-    ) || {
+JSON.parse(
+    localStorage.getItem(
+        "vexionAura"
+    )
+) || {
 
-        energy: 100,
+    energy:100,
 
-        level: 1,
+    maxEnergy:100,
 
-        xp: 0,
+    energyLevel:1,
 
-        collection: [],
+    energyUpgradeCost:100,
 
-        currentAura: "Unknown Aura",
+    level:1,
 
-        currentRarity: "UNKNOWN",
+    xp:0,
 
-        lastAura: "None"
+    collection:[],
 
-    };
+    currentAura:"Unknown Aura",
+
+    currentRarity:"UNKNOWN",
+
+    lastAura:"None"
+
+};
 
 
 let autoMode = false;
@@ -833,11 +1263,11 @@ let autoMode = false;
 let autoTimer = null;
 
 
-/* ================================
+/* ======================================
    SAVE
-================================ */
+====================================== */
 
-function saveGame() {
+function saveGame(){
 
     localStorage.setItem(
         "vexionAura",
@@ -847,51 +1277,61 @@ function saveGame() {
 }
 
 
-/* ================================
+/* ======================================
    PARTICLES
-================================ */
+====================================== */
 
-const particleContainer =
-    document.getElementById("particles");
+const particles =
+document.getElementById(
+    "particles"
+);
 
-for(let i = 0; i < 80; i++) {
+for(
+    let i=0;
+    i<90;
+    i++
+){
 
     const p =
-        document.createElement("div");
+    document.createElement(
+        "div"
+    );
 
-    p.className = "particle";
+    p.className =
+        "particle";
 
     p.style.left =
-        Math.random() * 100 + "%";
+        Math.random()*100+"%";
 
     p.style.animationDuration =
-        (5 + Math.random() * 12) + "s";
+        (5+Math.random()*12)+"s";
 
     p.style.animationDelay =
-        Math.random() * 10 + "s";
+        Math.random()*10+"s";
 
     p.style.opacity =
-        Math.random() * .7;
+        Math.random()*.7;
 
-    particleContainer.appendChild(p);
+    particles.appendChild(p);
 
 }
 
 
-/* ================================
-   ROLL AURA
-================================ */
+/* ======================================
+   ROLL
+====================================== */
 
-function rollAura() {
+function rollAura(){
 
-    if(game.energy < 10) {
+    if(
+        game.energy < 10
+    ){
 
         notify(
-            "⚡ Недостаточно энергии!"
+            "⚡ Нужна энергия!"
         );
 
         return;
-
     }
 
 
@@ -899,22 +1339,28 @@ function rollAura() {
 
 
     const random =
-        Math.random() * 100;
+        Math.random()*100;
 
 
-    let total = 0;
+    let total=0;
 
     let selected =
         auras[0];
 
 
-    for(const aura of auras) {
+    for(
+        const aura of auras
+    ){
 
-        total += aura.chance;
+        total +=
+            aura.chance;
 
-        if(random <= total) {
+        if(
+            random <= total
+        ){
 
-            selected = aura;
+            selected =
+                aura;
 
             break;
 
@@ -935,8 +1381,8 @@ function rollAura() {
 
     if(
         !game.collection
-            .includes(selected.name)
-    ) {
+        .includes(selected.name)
+    ){
 
         game.collection.push(
             selected.name
@@ -948,7 +1394,9 @@ function rollAura() {
     game.xp += 20;
 
 
-    if(game.xp >= 100) {
+    if(
+        game.xp >= 100
+    ){
 
         game.xp -= 100;
 
@@ -972,23 +1420,25 @@ function rollAura() {
 }
 
 
-/* ================================
+/* ======================================
    AURA EFFECT
-================================ */
+====================================== */
 
-function auraBurst(aura) {
+function auraBurst(aura){
 
-    document.documentElement.style
-        .setProperty(
-            "--aura-color",
-            aura.color
-        );
+    document.documentElement
+    .style
+    .setProperty(
+        "--aura",
+        aura.color
+    );
 
-    document.documentElement.style
-        .setProperty(
-            "--aura-glow",
-            aura.color
-        );
+    document.documentElement
+    .style
+    .setProperty(
+        "--glow",
+        aura.color
+    );
 
 
     const core =
@@ -1000,6 +1450,7 @@ function auraBurst(aura) {
     core.animate(
 
         [
+
             {
                 transform:
                     "scale(1)"
@@ -1007,7 +1458,7 @@ function auraBurst(aura) {
 
             {
                 transform:
-                    "scale(1.7)"
+                    "scale(1.8)"
             },
 
             {
@@ -1018,8 +1469,12 @@ function auraBurst(aura) {
         ],
 
         {
-            duration: 700,
-            easing: "ease-out"
+
+            duration:700,
+
+            easing:
+                "ease-out"
+
         }
 
     );
@@ -1027,69 +1482,35 @@ function auraBurst(aura) {
 }
 
 
-/* ================================
-   CLICK EFFECT
-================================ */
+/* ======================================
+   CLICK
+====================================== */
 
 document
-    .getElementById("auraButton")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            createClickEffect(
-                event.clientX,
-                event.clientY
-            );
-
-            rollAura();
-
-        }
-    );
+.getElementById(
+    "auraButton"
+)
+.addEventListener(
+    "click",
+    rollAura
+);
 
 
-function createClickEffect(x,y) {
-
-    const effect =
-        document.createElement(
-            "div"
-        );
-
-    effect.className =
-        "click-effect";
-
-    effect.style.left =
-        x - 7 + "px";
-
-    effect.style.top =
-        y - 7 + "px";
-
-    document.body.appendChild(
-        effect
-    );
-
-
-    setTimeout(
-        () => effect.remove(),
-        700
-    );
-
-}
-
-
-/* ================================
+/* ======================================
    AUTO
-================================ */
+====================================== */
 
 document
-    .getElementById("autoButton")
-    .addEventListener(
-        "click",
-        toggleAuto
-    );
+.getElementById(
+    "autoButton"
+)
+.addEventListener(
+    "click",
+    toggleAuto
+);
 
 
-function toggleAuto() {
+function toggleAuto(){
 
     autoMode =
         !autoMode;
@@ -1101,7 +1522,9 @@ function toggleAuto() {
         );
 
 
-    if(autoMode) {
+    if(
+        autoMode
+    ){
 
         button.textContent =
             "🤖 AUTO: ON";
@@ -1112,7 +1535,7 @@ function toggleAuto() {
 
 
         notify(
-            "AUTO AURA включён"
+            "AUTO включён"
         );
 
 
@@ -1123,12 +1546,14 @@ function toggleAuto() {
             setInterval(
                 () => {
 
-                    if(game.energy < 10) {
+                    if(
+                        game.energy < 10
+                    ){
 
                         toggleAuto();
 
                         notify(
-                            "AUTO остановлен — нет энергии"
+                            "AUTO остановлен"
                         );
 
                         return;
@@ -1138,13 +1563,12 @@ function toggleAuto() {
                     rollAura();
 
                 },
-
                 1200
             );
 
     }
 
-    else {
+    else{
 
         button.textContent =
             "🤖 AUTO: OFF";
@@ -1158,23 +1582,101 @@ function toggleAuto() {
             autoTimer
         );
 
-        autoTimer = null;
+        autoTimer =
+            null;
 
     }
 
 }
 
 
-/* ================================
-   UPDATE UI
-================================ */
+/* ======================================
+   ENERGY UPGRADE
+====================================== */
 
-function updateUI() {
+document
+.getElementById(
+    "upgradeButton"
+)
+.addEventListener(
+    "click",
+    upgradeEnergy
+);
+
+
+function upgradeEnergy(){
+
+    if(
+        game.energy <
+        game.energyUpgradeCost
+    ){
+
+        notify(
+            "💰 Недостаточно энергии для улучшения!"
+        );
+
+        return;
+
+    }
+
+
+    game.energy -=
+        game.energyUpgradeCost;
+
+
+    game.energyLevel++;
+
+
+    game.maxEnergy =
+        Math.floor(
+            game.maxEnergy * 1.5
+        );
+
+
+    game.energy =
+        game.maxEnergy;
+
+
+    game.energyUpgradeCost =
+        Math.floor(
+            game.energyUpgradeCost * 1.7
+        );
+
+
+    notify(
+        "🔋 ENERGY CORE UPGRADED!"
+    );
+
+
+    saveGame();
+
+    updateUI();
+
+}
+
+
+/* ======================================
+   UI
+====================================== */
+
+function updateUI(){
 
     document.getElementById(
         "energy"
     ).textContent =
         game.energy;
+
+
+    document.getElementById(
+        "maxEnergy"
+    ).textContent =
+        game.maxEnergy;
+
+
+    document.getElementById(
+        "auraCount"
+    ).textContent =
+        game.collection.length;
 
 
     document.getElementById(
@@ -1192,7 +1694,7 @@ function updateUI() {
     document.getElementById(
         "xpFill"
     ).style.width =
-        game.xp + "%";
+        game.xp+"%";
 
 
     document.getElementById(
@@ -1207,10 +1709,45 @@ function updateUI() {
         game.lastAura;
 
 
+    const energyPercent =
+        Math.min(
+            100,
+            (
+                game.energy /
+                game.maxEnergy
+            )*100
+        );
+
+
     document.getElementById(
-        "auraCount"
+        "energyFill"
+    ).style.width =
+        energyPercent+"%";
+
+
+    document.getElementById(
+        "energyInfo"
     ).textContent =
-        game.collection.length;
+        game.energy +
+        " / " +
+        game.maxEnergy +
+        " ENERGY";
+
+
+    const upgradeButton =
+        document.getElementById(
+            "upgradeButton"
+        );
+
+
+    upgradeButton.textContent =
+        "🔋 UPGRADE ENERGY • " +
+        game.energyUpgradeCost;
+
+
+    upgradeButton.disabled =
+        game.energy <
+        game.energyUpgradeCost;
 
 
     const rarity =
@@ -1229,29 +1766,33 @@ function updateUI() {
 
     const current =
         auras.find(
-            a =>
-                a.name ===
+            aura =>
+                aura.name ===
                 game.currentAura
         );
 
 
-    if(current) {
+    if(current){
 
         rarity.classList.add(
             current.className
         );
 
-        document.documentElement.style
-            .setProperty(
-                "--aura-color",
-                current.color
-            );
 
-        document.documentElement.style
-            .setProperty(
-                "--aura-glow",
-                current.color
-            );
+        document.documentElement
+        .style
+        .setProperty(
+            "--aura",
+            current.color
+        );
+
+
+        document.documentElement
+        .style
+        .setProperty(
+            "--glow",
+            current.color
+        );
 
     }
 
@@ -1261,11 +1802,11 @@ function updateUI() {
 }
 
 
-/* ================================
+/* ======================================
    COLLECTION
-================================ */
+====================================== */
 
-function renderCollection() {
+function renderCollection(){
 
     const container =
         document.getElementById(
@@ -1273,14 +1814,19 @@ function renderCollection() {
         );
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
-    for(const aura of auras) {
+    for(
+        const aura of auras
+    ){
 
         const unlocked =
             game.collection
-                .includes(aura.name);
+            .includes(
+                aura.name
+            );
 
 
         const card =
@@ -1290,40 +1836,47 @@ function renderCollection() {
 
 
         card.className =
-            "card" +
+            "card"+
             (
                 unlocked
-                    ? ""
-                    : " locked"
+                ? ""
+                : " locked"
             );
 
 
         card.innerHTML = `
 
             <div class="card-icon">
+
                 ${
                     unlocked
-                        ? aura.icon
-                        : "?"
+                    ? aura.icon
+                    : "?"
                 }
+
             </div>
 
             <div class="card-name">
+
                 ${
                     unlocked
-                        ? aura.name
-                        : "Unknown"
+                    ? aura.name
+                    : "Unknown"
                 }
+
             </div>
 
             <div
-                class="card-rarity ${aura.className}"
+                class="card-rarity
+                ${aura.className}"
             >
+
                 ${
                     unlocked
-                        ? aura.rarity
-                        : "LOCKED"
+                    ? aura.rarity
+                    : "LOCKED"
                 }
+
             </div>
 
         `;
@@ -1338,16 +1891,30 @@ function renderCollection() {
 }
 
 
-/* ================================
+/* ======================================
    ENERGY REGEN
-================================ */
+====================================== */
 
 setInterval(
+
     () => {
 
-        if(game.energy < 100) {
+        if(
+            game.energy <
+            game.maxEnergy
+        ){
 
-            game.energy++;
+            game.energy += 2;
+
+            if(
+                game.energy >
+                game.maxEnergy
+            ){
+
+                game.energy =
+                    game.maxEnergy;
+
+            }
 
             saveGame();
 
@@ -1358,29 +1925,30 @@ setInterval(
     },
 
     3000
+
 );
 
 
-/* ================================
-   NOTIFICATION
-================================ */
+/* ======================================
+   NOTIFICATIONS
+====================================== */
 
 let notificationTimer;
 
 
-function notify(text) {
+function notify(text){
 
-    const notification =
+    const n =
         document.getElementById(
             "notification"
         );
 
 
-    notification.textContent =
+    n.textContent =
         text;
 
 
-    notification.classList.add(
+    n.classList.add(
         "show"
     );
 
@@ -1392,24 +1960,25 @@ function notify(text) {
 
     notificationTimer =
         setTimeout(
+
             () => {
 
-                notification
-                    .classList.remove(
-                        "show"
-                    );
+                n.classList.remove(
+                    "show"
+                );
 
             },
 
             2200
+
         );
 
 }
 
 
-/* ================================
+/* ======================================
    START
-================================ */
+====================================== */
 
 updateUI();
 
