@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA — Beyond Power</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 50% 40%, #18204a 0%, #080a18 35%, #03040b 75%);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    opacity: .5;
+    animation: float linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(110vh);
+    }
+    to {
+        transform: translateY(-10vh);
+    }
+}
+
+header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    background: rgba(3,4,11,.55);
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.logo span {
+    opacity: .45;
+}
+
+.stats {
+    display: flex;
+    gap: 25px;
+}
+
+.stat {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.stat b {
+    color: white;
+    font-size: 17px;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, 92%);
+    margin: auto;
+    padding: 55px 0;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 9vw, 110px);
+    line-height: .9;
+    letter-spacing: -5px;
+    text-shadow: 0 0 40px rgba(150,170,255,.35);
+}
+
+.hero p {
+    margin-top: 18px;
+    color: #858aa5;
+    font-size: 16px;
+}
+
+.arena {
+    min-height: 470px;
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.aura-container {
+    position: relative;
+    width: 290px;
+    height: 290px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aura-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(150,170,255,.25);
+    box-shadow:
+        0 0 30px rgba(120,140,255,.25),
+        inset 0 0 30px rgba(120,140,255,.12);
+    animation: rotate 10s linear infinite;
+}
+
+.aura-ring:nth-child(2) {
+    width: 82%;
+    height: 82%;
+    animation-direction: reverse;
+    animation-duration: 7s;
+}
+
+.aura-ring:nth-child(3) {
+    width: 64%;
+    height: 64%;
+    animation-duration: 5s;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.aura-core {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff, #9ba8ff 20%, #586cff 45%, transparent 72%);
+    box-shadow:
+        0 0 30px #7180ff,
+        0 0 80px #5265ff,
+        0 0 140px rgba(80,100,255,.7);
+    animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(.9);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.level {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.level-name {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.level-number {
+    margin-top: 8px;
+    color: #9298b8;
+}
+
+.xp-box {
+    width: min(500px, 90%);
+    margin: 20px auto;
+}
+
+.xp-bar {
+    height: 9px;
+    background: rgba(255,255,255,.08);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6675ff, #d9ddff);
+    box-shadow: 0 0 15px #7381ff;
+    transition: width .5s;
+}
+
+.xp-text {
+    margin-top: 8px;
+    color: #777d99;
+    font-size: 12px;
+}
+
+.action {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    padding: 15px 27px;
+    transition: .2s;
+}
+
+#rollBtn {
+    background: linear-gradient(135deg, #6877ff, #4655e8);
+    box-shadow: 0 10px 30px rgba(70,85,232,.3);
+}
+
+#rollBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(70,85,232,.5);
+}
+
+#rollBtn:active {
+    transform: scale(.96);
+}
+
+.secondary {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.section {
+    margin-top: 70px;
+}
+
+.section-title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.collection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px,1fr));
+    gap: 14px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 17px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.07);
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,.07);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.card-name {
+    font-weight: 800;
+}
+
+.card-rarity {
+    margin-top: 7px;
+    color: #858aa5;
+    font-size: 12px;
+}
+
+.locked {
+    opacity: .35;
+    filter: grayscale(1);
+}
+
+#notification {
+    position: fixed;
+    left: 50%;
+    bottom: 35px;
+    transform: translate(-50%, 30px);
+    padding: 15px 25px;
+    border-radius: 13px;
+    background: rgba(10,12,25,.9);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    transition: .35s;
+    z-index: 10;
+}
+
+#notification.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.roll-result {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.72);
+    backdrop-filter: blur(12px);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.roll-result.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.result-box {
+    width: min(450px, 90%);
+    text-align: center;
+    padding: 45px 25px;
+    border-radius: 25px;
+    background: #090b18;
+    border: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0 0 100px rgba(90,100,255,.25);
+    transform: scale(.8);
+    transition: .4s;
+}
+
+.roll-result.active .result-box {
+    transform: scale(1);
+}
+
+.result-icon {
+    font-size: 75px;
+}
+
+.result-title {
+    margin-top: 15px;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.result-rarity {
+    margin-top: 10px;
+    color: #8c92ad;
+}
+
+.close-result {
+    margin-top: 25px;
+    background: rgba(255,255,255,.08);
+}
+
+footer {
+    text-align: center;
+    color: #4f5369;
+    padding: 70px 20px 30px;
+    font-size: 12px;
+}
+
+.legendary {
+    color: #ffd76a;
+}
+
+.mythic {
+    color: #ff6aff;
+}
+
+.epic {
+    color: #b47cff;
+}
+
+.rare {
+    color: #55c7ff;
+}
+
+.common {
+    color: #aaa;
+}
+
+@media(max-width:600px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .stats {
+        gap: 10px;
+    }
+
+    .arena {
+        min-height: 400px;
+    }
+
+    .aura-container {
+        width: 230px;
+        height: 230px;
+    }
+
+    .aura-core {
+        width: 100px;
+        height: 100px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<header>
+    <div class="logo">AURA<span>.CORE</span></div>
+
+    <div class="stats">
+        <div class="stat">
+            ENERGY<br>
+            <b id="energy">100</b>
+        </div>
+
+        <div class="stat">
+            AURAS<br>
+            <b id="auraCount">0</b>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <h1>AWAKEN.</h1>
+    <p>Your power is waiting to be discovered.</p>
+</section>
+
+<section class="arena">
+
+    <div class="aura-container">
+        <div class="aura-ring"></div>
+        <div class="aura-ring"></div>
+        <div class="aura-ring"></div>
+        <div class="aura-core" id="auraCore"></div>
+    </div>
+
+    <div class="level">
+        <div class="level-name" id="auraName">Unknown Aura</div>
+        <div class="level-number">
+            LEVEL <span id="level">1</span>
+        </div>
+
+        <div class="xp-box">
+            <div class="xp-bar">
+                <div class="xp-fill" id="xpFill"></div>
+            </div>
+
+            <div class="xp-text">
+                <span id="xp">0</span> / 100 XP
+            </div>
+        </div>
+
+        <div class="action">
+            <button id="rollBtn">⚡ AWAKEN AURA</button>
+            <button class="secondary" onclick="resetGame()">RESET</button>
+        </div>
+    </div>
+
+</section>
+
+<section class="section">
+    <h2 class="section-title">YOUR COLLECTION</h2>
+
+    <div class="collection" id="collection"></div>
+</section>
+
+</main>
+
+<footer>
+    AURA.CORE — Discover what exists beyond power.
+</footer>
+
+<div id="notification"></div>
+
+<div class="roll-result" id="result">
+    <div class="result-box">
+
+        <div class="result-icon" id="resultIcon">✨</div>
+
+        <div class="result-title" id="resultTitle">
+            NEW AURA
+        </div>
+
+        <div class="result-rarity" id="resultRarity">
+            RARE
+        </div>
+
+        <button class="close-result" onclick="closeResult()">
+            CONTINUE
+        </button>
+
+    </div>
+</div>
+
+<script>
+
+/* =========================
+   AURA DATA
+========================= */
+
+const auras = [
+    {
+        name: "Void",
+        icon: "🌑",
+        rarity: "COMMON",
+        chance: 55,
+        class: "common"
+    },
+    {
+        name: "Frost",
+        icon: "❄️",
+        rarity: "RARE",
+        chance: 25,
+        class: "rare"
+    },
+    {
+        name: "Thunder",
+        icon: "⚡",
+        rarity: "EPIC",
+        chance: 13,
+        class: "epic"
+    },
+    {
+        name: "Solar",
+        icon: "☀️",
+        rarity: "LEGENDARY",
+        chance: 6,
+        class: "legendary"
+    },
+    {
+        name: "Eternal",
+        icon: "💠",
+        rarity: "MYTHIC",
+        chance: 1,
+        class: "mythic"
+    }
+];
+
+/* =========================
+   SAVE DATA
+========================= */
+
+let game = JSON.parse(localStorage.getItem("auraGame")) || {
+    energy: 100,
+    level: 1,
+    xp: 0,
+    collection: [],
+    currentAura: "Unknown Aura"
+};
+
+function save() {
+    localStorage.setItem("auraGame", JSON.stringify(game));
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+const particles = document.getElementById("particles");
+
+for(let i = 0; i < 70; i++) {
+
+    const p = document.createElement("div");
+
+    p.className = "particle";
+
+    p.style.left = Math.random() * 100 + "%";
+    p.style.animationDuration = (5 + Math.random() * 10) + "s";
+    p.style.animationDelay = Math.random() * 10 + "s";
+    p.style.opacity = Math.random();
+
+    particles.appendChild(p);
+}
+
+/* =========================
+   ROLL SYSTEM
+========================= */
+
+function rollAura() {
+
+    if(game.energy < 10) {
+        notify("Недостаточно энергии ⚡");
+        return;
+    }
+
+    game.energy -= 10;
+
+    const random = Math.random() * 100;
+
+    let sum = 0;
+    let selected = auras[0];
+
+    for(const aura of auras) {
+
+        sum += aura.chance;
+
+        if(random <= sum) {
+            selected = aura;
+            break;
+        }
+    }
+
+    game.currentAura = selected.name;
+
+    if(!game.collection.includes(selected.name)) {
+        game.collection.push(selected.name);
+    }
+
+    game.xp += 20;
+
+    if(game.xp >= 100) {
+
+        game.xp -= 100;
+        game.level++;
+
+        notify("LEVEL UP! 🔥");
+    }
+
+    save();
+    updateUI();
+    showResult(selected);
+}
+
+/* =========================
+   RESULT
+========================= */
+
+function showResult(aura) {
+
+    document.getElementById("resultIcon").textContent = aura.icon;
+
+    document.getElementById("resultTitle").textContent =
+        aura.name.toUpperCase();
+
+    const rarity = document.getElementById("resultRarity");
+
+    rarity.textContent = aura.rarity;
+    rarity.className = "result-rarity " + aura.class;
+
+    document.getElementById("result").classList.add("active");
+
+    auraBurst();
+}
+
+function closeResult() {
+    document.getElementById("result").classList.remove("active");
+}
+
+/* =========================
+   AURA BURST
+========================= */
+
+function auraBurst() {
+
+    const core = document.getElementById("auraCore");
+
+    core.animate(
+        [
+            {
+                transform: "scale(1)",
+                filter: "brightness(1)"
+            },
+            {
+                transform: "scale(1.7)",
+                filter: "brightness(2)"
+            },
+            {
+                transform: "scale(1)",
+                filter: "brightness(1)"
+            }
+        ],
+        {
+            duration: 900,
+            easing: "ease-out"
+        }
+    );
+}
+
+/* =========================
+   UI
+========================= */
+
+function updateUI() {
+
+    document.getElementById("energy").textContent =
+        game.energy;
+
+    document.getElementById("level").textContent =
+        game.level;
+
+    document.getElementById("xp").textContent =
+        game.xp;
+
+    document.getElementById("xpFill").style.width =
+        game.xp + "%";
+
+    document.getElementById("auraName").textContent =
+        game.currentAura;
+
+    document.getElementById("auraCount").textContent =
+        game.collection.length;
+
+    renderCollection();
+}
+
+function renderCollection() {
+
+    const container =
+        document.getElementById("collection");
+
+    container.innerHTML = "";
+
+    for(const aura of auras) {
+
+        const unlocked =
+            game.collection.includes(aura.name);
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "card " + (!unlocked ? "locked" : "");
+
+        card.innerHTML = `
+            <div class="card-icon">
+                ${unlocked ? aura.icon : "?"}
+            </div>
+
+            <div class="card-name">
+                ${unlocked ? aura.name : "Unknown"}
+            </div>
+
+            <div class="card-rarity ${aura.class}">
+                ${unlocked ? aura.rarity : "LOCKED"}
+            </div>
+        `;
+
+        container.appendChild(card);
+    }
+}
+
+/* =========================
+   ENERGY REGEN
+========================= */
+
+setInterval(() => {
+
+    if(game.energy < 100) {
+
+        game.energy++;
+
+        save();
+        updateUI();
+    }
+
+}, 3000);
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+let notificationTimer;
+
+function notify(text) {
+
+    const n =
+        document.getElementById("notification");
+
+    n.textContent = text;
+    n.classList.add("show");
+
+    clearTimeout(notificationTimer);
+
+    notificationTimer =
+        setTimeout(() => {
+            n.classList.remove("show");
+        }, 2200);
+}
+
+/* =========================
+   RESET
+========================= */
+
+function resetGame() {
+
+    if(!confirm("Удалить весь прогресс?")) {
+        return;
+    }
+
+    game = {
+        energy: 100,
+        level: 1,
+        xp: 0,
+        collection: [],
+        currentAura: "Unknown Aura"
+    };
+
+    save();
+    updateUI();
+
+    notify("Прогресс сброшен");
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+document
+    .getElementById("rollBtn")
+    .addEventListener("click", rollAura);
+
+/* =========================
+   START
+========================= */
+
+updateUI();
+
+</script>
+
+</body>
+</html>
